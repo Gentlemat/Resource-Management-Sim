@@ -5,21 +5,19 @@ using UnityEngine;
 
 public class MainManager : MonoBehaviour
 {
-    // Start() and Update() methods deleted - we don't need them right now
-
-    public static MainManager instance;
+    public static MainManager Instance { get; private set; }
 
     public Color TeamColor; // new variable declared
 
     private void Awake()
     {
-        if (instance != null)
+        if (Instance != null)
         {
             Destroy(gameObject);
             return;
         }
 
-        instance = this;
+        Instance = this;
         DontDestroyOnLoad(gameObject);
 
         LoadColor();
